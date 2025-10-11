@@ -41,7 +41,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  radial_charts: ^0.1.0
+  radial_charts: ^0.1.2
 ```
 
 Then run:
