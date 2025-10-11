@@ -2,6 +2,10 @@
 # (it's useful on GitHub but adds ~85MB to package size)
 example/
 
+# Build artifacts and generated files
+build/
+.dart_tool/
+
 # IDE files
 *.iml
 .idea/
