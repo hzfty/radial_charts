@@ -1,0 +1,21 @@
+name: radial_charts
+description: A collection of customizable radial chart widgets for Flutter. Display ratings and data across multiple categories with variable radius segments, perfect for visualizing assessments, reviews, and multi-dimensional data.
+version: 0.1.0
+homepage: https://github.com/hzfty/radial_charts
+repository: https://github.com/hzfty/radial_charts
+issue_tracker: https://github.com/hzfty/radial_charts/issues
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
