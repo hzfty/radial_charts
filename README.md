@@ -18,16 +18,16 @@ A collection of customizable radial chart widgets for Flutter. Display ratings a
 
 <table>
   <tr>
-    <td><img src="screenshots/1%20Life%20balance.png" alt="Life Balance" width="300"/></td>
-    <td><img src="screenshots/2%20Skills%20Assessment.png" alt="Skills Assessment" width="300"/></td>
+    <td><img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/1-life-balance.png" alt="Life Balance" width="300"/></td>
+    <td><img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/2-skills-assessment.png" alt="Skills Assessment" width="300"/></td>
   </tr>
   <tr>
     <td align="center"><b>Life Balance</b></td>
     <td align="center"><b>Skills Assessment</b></td>
   </tr>
   <tr>
-    <td><img src="screenshots/3%20Product%20Features.png" alt="Product Features" width="300"/></td>
-    <td><img src="screenshots/4%20Custom%20Example.png" alt="Custom Example" width="300"/></td>
+    <td><img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/3-product-features.png" alt="Product Features" width="300"/></td>
+    <td><img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/4-custom-example.png" alt="Custom Example" width="300"/></td>
   </tr>
   <tr>
     <td align="center"><b>Product Features</b></td>
@@ -41,7 +41,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  radial_charts: ^0.1.2
+  radial_charts: ^0.1.3
 ```
 
 Then run:
