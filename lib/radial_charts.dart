@@ -48,3 +48,15 @@ export 'src/radial_rating_chart/models/category_data.dart';
 export 'src/radial_rating_chart/models/chart_config.dart';
 export 'src/radial_rating_chart/widgets/radial_rating_chart.dart';
 export 'src/radial_rating_chart/painters/radial_chart_painter.dart';
+
+// Rounded Donut Chart
+export 'src/rounded_donut_chart/models/donut_segment_data.dart';
+export 'src/rounded_donut_chart/models/donut_chart_config.dart';
+export 'src/rounded_donut_chart/widgets/rounded_donut_chart.dart';
+export 'src/rounded_donut_chart/painters/rounded_donut_painter.dart';
+export 'src/rounded_donut_chart/painters/single_item_donut_painter.dart';
+
+// Common (shared between charts)
+export 'src/common/models/legend_style.dart';
+export 'src/common/models/legend_item.dart';
+export 'src/common/widgets/unified_legend.dart';

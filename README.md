@@ -8,9 +8,10 @@ A collection of customizable radial chart widgets for Flutter. Display ratings a
 ## Features
 
 ✨ **Variable Radius Segments** - Each category's segment radius represents its rating value
+🍩 **Rounded Donut Chart** - NEW! Donut chart with smooth, rounded segment edges
 🎨 **Highly Customizable** - Colors, grid levels, opacity, borders, and more
 📦 **Predefined Categories** - Life balance, skills, product features templates
-📊 **Legend Support** - Optional legend with customizable layout
+📊 **Legend Support** - Optional legend with customizable layout (multiple styles)
 🚀 **Zero Dependencies** - Pure Flutter implementation
 ⚡ **Performance Optimized** - Efficient CustomPainter rendering
 
@@ -41,7 +42,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  radial_charts: ^0.1.3
+  radial_charts: ^0.2.0
 ```
 
 Then run:
@@ -139,6 +140,82 @@ RadialRatingChart(
 )
 ```
 
+## Rounded Donut Chart
+
+### Basic Example
+
+The `RoundedDonutChart` widget displays data as a donut chart with beautifully rounded, smooth edges between segments.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:radial_charts/radial_charts.dart';
+
+RoundedDonutChart(
+  data: [
+    DonutSegmentData(
+      id: 'completed',
+      value: 45,
+      color: Colors.green,
+      label: 'Completed',
+    ),
+    DonutSegmentData(
+      id: 'pending',
+      value: 30,
+      color: Colors.orange,
+      label: 'Pending',
+    ),
+    DonutSegmentData(
+      id: 'failed',
+      value: 25,
+      color: Colors.red,
+      label: 'Failed',
+    ),
+  ],
+  showCenterText: true,
+  centerTextBuilder: (total) => '${total.toInt()}',
+  showLegend: true,
+  legendStyle: LegendStyle.roundedRectangle,
+  showCountInLegend: true,
+)
+```
+
+### With Custom Configuration
+
+```dart
+RoundedDonutChart(
+  data: yourSegmentData,
+  config: DonutChartConfig(
+    size: 270,
+    outerRadius: 135,
+    innerRadius: 100,
+    startAngle: -math.pi / 2,
+    sortSegmentsById: true,
+  ),
+  // Center text options
+  centerText: '100',  // Or use centerTextBuilder for dynamic text
+  centerTextStyle: TextStyle(
+    fontSize: 72,
+    fontWeight: FontWeight.w600,
+    color: Colors.grey,
+  ),
+  showCenterText: true,
+  // Legend options
+  showLegend: true,
+  legendStyle: LegendStyle.roundedRectangle, // or circle, rectangle
+  legendColumns: 2,
+  legendIndicatorSize: Size(33, 28),
+  showCountInLegend: true,
+)
+```
+
+### Legend Styles
+
+The `RoundedDonutChart` supports three legend styles:
+
+- **`LegendStyle.circle`** - Circular indicators (similar to RadialRatingChart)
+- **`LegendStyle.rectangle`** - Square indicators with sharp corners
+- **`LegendStyle.roundedRectangle`** - Rounded rectangle indicators with optional count badges (default)
+
 ## API Reference
 
 ### RadialRatingChart
@@ -194,6 +271,63 @@ Configuration for chart appearance.
 | `segmentBorderWidth` | `double` | `0.5` | Border width |
 | `startAngle` | `double` | `-π/2` | Start angle in radians |
 | `sortCategoriesById` | `bool` | `true` | Sort categories by ID |
+
+### RoundedDonutChart
+
+Main widget for displaying the rounded donut chart.
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `data` | `List<DonutSegmentData>` | required | List of segment data to display |
+| `config` | `DonutChartConfig?` | `DonutChartConfig()` | Configuration for chart appearance |
+| `centerText` | `String?` | `null` | Static text to display in center |
+| `centerTextBuilder` | `String Function(double)?` | `null` | Function to generate center text from total |
+| `centerTextStyle` | `TextStyle?` | default style | Text style for center text |
+| `showCenterText` | `bool` | `true` | Whether to show center text |
+| `showLegend` | `bool` | `false` | Whether to show legend |
+| `legendStyle` | `LegendStyle` | `roundedRectangle` | Visual style of legend indicators |
+| `legendColumns` | `int` | `2` | Number of columns in legend |
+| `legendIndicatorSize` | `Size` | `Size(33, 28)` | Size of legend color indicators |
+| `showCountInLegend` | `bool` | `true` | Show count values in indicators |
+| `legendSpacing` | `double` | `8.0` | Spacing between legend items |
+| `legendTextStyle` | `TextStyle?` | `null` | Text style for legend labels |
+| `legendCountStyle` | `TextStyle?` | `null` | Text style for legend counts |
+
+### DonutSegmentData
+
+Represents a segment (slice) in the donut chart.
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `id` | `String` | ✅ | Unique identifier |
+| `value` | `double` | ✅ | Numerical value (segment size) |
+| `color` | `Color` | ✅ | Segment color |
+| `label` | `String` | ✅ | Display label |
+| `description` | `String?` | ❌ | Optional description |
+| `metadata` | `Map<String, dynamic>?` | ❌ | Optional metadata |
+
+### DonutChartConfig
+
+Configuration for donut chart appearance.
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `size` | `double` | `270.0` | Chart size (width & height) |
+| `outerRadius` | `double` | `135.0` | Outer radius of donut ring |
+| `innerRadius` | `double` | `100.0` | Inner radius (creates center hole) |
+| `startAngle` | `double` | `-π/2` | Start angle in radians |
+| `sortSegmentsById` | `bool` | `true` | Sort segments by ID |
+| `emptyStateColor` | `Color` | `Color(0x4DBCB5C0)` | Background color for empty state |
+| `emptyStateBorderColor` | `Color` | `Color(0xFFE0E0E0)` | Border color for empty state |
+| `emptyStateBorderWidth` | `double` | `2.0` | Border width for empty state |
+
+### LegendStyle
+
+Enum defining legend indicator styles.
+
+- `circle` - Circular indicators
+- `rectangle` - Rectangular indicators with sharp corners
+- `roundedRectangle` - Rectangular indicators with rounded corners
 
 ## Examples
 

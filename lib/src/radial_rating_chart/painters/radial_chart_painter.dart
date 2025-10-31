@@ -40,8 +40,8 @@ class RadialChartPainter extends CustomPainter {
 
   /// Prepare data: filter valid entries and optionally sort
   List<CategoryData> _prepareData() {
-    // Filter data with ratings above minimum
-    var validData = data.where((item) => item.rating > config.minRating).toList();
+    // Filter data with ratings at or above minimum
+    var validData = data.where((item) => item.rating >= config.minRating).toList();
 
     // Sort by category ID if configured
     if (config.sortCategoriesById) {
@@ -65,7 +65,8 @@ class RadialChartPainter extends CustomPainter {
     }
 
     // Draw radial lines (one for each category)
-    if (validData.isNotEmpty) {
+    // Only draw division lines when there are 2 or more categories
+    if (validData.length > 1) {
       final angleStep = 2 * math.pi / validData.length;
 
       for (int i = 0; i < validData.length; i++) {
@@ -87,7 +88,7 @@ class RadialChartPainter extends CustomPainter {
       final item = validData[i];
 
       // Calculate segment radius based on rating
-      final normalizedRating = (item.rating - config.minRating) / (config.maxRating - config.minRating);
+      final normalizedRating = item.rating / config.maxRating;
       final segmentRadius = radius * normalizedRating;
 
       // Get category color

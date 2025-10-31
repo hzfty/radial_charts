@@ -20,7 +20,7 @@ class ChartConfig {
   /// Maximum rating value (default: 10)
   final int maxRating;
 
-  /// Minimum rating value (default: 1)
+  /// Minimum rating value (default: 0)
   final int minRating;
 
   /// Number of concentric circles in the grid (default: 10)
@@ -53,7 +53,7 @@ class ChartConfig {
   const ChartConfig({
     this.size = 280.0,
     this.maxRating = 10,
-    this.minRating = 1,
+    this.minRating = 0,
     this.gridLevels = 10,
     this.gridColor = const Color(0x4D000000), // 30% black
     this.gridStrokeWidth = 1.0,

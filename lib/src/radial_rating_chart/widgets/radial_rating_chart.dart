@@ -1,8 +1,10 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import '../models/category_data.dart';
 import '../models/chart_config.dart';
 import '../painters/radial_chart_painter.dart';
+import '../../common/models/legend_style.dart';
+import '../../common/models/legend_item.dart';
+import '../../common/widgets/unified_legend.dart';
 
 /// Main widget for displaying a radial rating chart
 ///
@@ -39,6 +41,9 @@ class RadialRatingChart extends StatelessWidget {
   /// Number of columns for the legend (default: 2)
   final int legendColumns;
 
+  /// Style of the legend indicator (circle, rectangle, or roundedRectangle)
+  final LegendStyle legendStyle;
+
   /// Spacing between legend items
   final double legendSpacing;
 
@@ -48,15 +53,24 @@ class RadialRatingChart extends StatelessWidget {
   /// Text style for legend labels
   final TextStyle? legendTextStyle;
 
+  /// Whether to show rating values inside legend indicators (for rectangular styles)
+  final bool showRatingInLegend;
+
+  /// Text style for rating values inside legend indicators
+  final TextStyle? legendRatingStyle;
+
   const RadialRatingChart({
     super.key,
     required this.data,
     this.config,
     this.showLegend = false,
     this.legendColumns = 2,
+    this.legendStyle = LegendStyle.circle,
     this.legendSpacing = 8.0,
     this.legendIndicatorSize = 16.0,
     this.legendTextStyle,
+    this.showRatingInLegend = false,
+    this.legendRatingStyle,
   });
 
   @override
@@ -82,80 +96,43 @@ class RadialRatingChart extends StatelessWidget {
 
         // Optional legend
         if (showLegend && data.isNotEmpty) ...[
-          SizedBox(height: legendSpacing * 2),
-          _buildLegend(context),
+          SizedBox(height: legendSpacing * 3),
+          _buildLegend(),
         ],
       ],
     );
   }
 
-  /// Build the legend widget
-  Widget _buildLegend(BuildContext context) {
+  /// Build the legend widget using UnifiedLegend
+  Widget _buildLegend() {
     // Filter valid data (same as painter does)
     final validData = data
-        .where((item) => item.rating > (config?.minRating ?? 1))
+        .where((item) => item.rating >= (config?.minRating ?? 0))
         .toList();
 
     if (validData.isEmpty) return const SizedBox.shrink();
 
-    // Sort if configured
-    if (config?.sortCategoriesById ?? true) {
-      validData.sort((a, b) => a.id.compareTo(b.id));
-    }
+    // Determine indicator size based on whether we're showing ratings
+    final indicatorSize = showRatingInLegend && legendStyle != LegendStyle.circle
+        ? const Size(33, 28)
+        : Size(legendIndicatorSize, legendIndicatorSize);
 
-    // Calculate items per column
-    final itemsPerColumn = (validData.length / legendColumns).ceil();
-
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(legendColumns, (columnIndex) {
-        final startIndex = columnIndex * itemsPerColumn;
-        final endIndex = math.min(startIndex + itemsPerColumn, validData.length);
-
-        if (startIndex >= validData.length) {
-          return const Expanded(child: SizedBox.shrink());
-        }
-
-        final columnItems = validData.sublist(startIndex, endIndex);
-
-        return Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: columnItems.map((item) => _buildLegendItem(item)).toList(),
-          ),
-        );
-      }),
-    );
-  }
-
-  /// Build a single legend item
-  Widget _buildLegendItem(CategoryData item) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: legendSpacing),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Color indicator
-          Container(
-            width: legendIndicatorSize,
-            height: legendIndicatorSize,
-            decoration: BoxDecoration(
-              color: item.category.color,
-              shape: BoxShape.circle,
-            ),
-          ),
-          SizedBox(width: legendSpacing),
-          // Category name
-          Expanded(
-            child: Text(
-              item.category.name,
-              style: legendTextStyle ?? const TextStyle(fontSize: 12),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-            ),
-          ),
-        ],
-      ),
+    return UnifiedLegend(
+      items: validData.map((item) => LegendItem(
+        id: item.id,
+        label: item.category.name,
+        color: item.category.color,
+        emoji: item.category.emoji,
+        value: showRatingInLegend ? item.rating.toInt().toString() : null,
+      )).toList(),
+      style: legendStyle,
+      showValueInIndicator: showRatingInLegend,
+      columns: legendColumns,
+      indicatorSize: indicatorSize,
+      spacing: legendSpacing,
+      textStyle: legendTextStyle,
+      valueStyle: legendRatingStyle,
+      sortById: config?.sortCategoriesById ?? true,
     );
   }
 }
