@@ -76,8 +76,8 @@ class _CenterTextSettingsState extends State<CenterTextSettings> {
                 Text(
                   'Center Text',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
@@ -150,7 +150,8 @@ class _CenterTextSettingsState extends State<CenterTextSettings> {
         infoColor = Colors.blue;
         break;
       case CenterTextMode.total:
-        infoText = 'The sum of all segment values will be calculated and displayed.';
+        infoText =
+            'The sum of all segment values will be calculated and displayed.';
         infoIcon = Icons.functions;
         infoColor = Colors.green;
         break;
@@ -159,18 +160,14 @@ class _CenterTextSettingsState extends State<CenterTextSettings> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
-          infoIcon,
-          size: 16,
-          color: infoColor,
-        ),
+        Icon(infoIcon, size: 16, color: infoColor),
         const SizedBox(width: 8),
         Expanded(
           child: Text(
             infoText,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: infoColor,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodySmall?.copyWith(color: infoColor),
           ),
         ),
       ],

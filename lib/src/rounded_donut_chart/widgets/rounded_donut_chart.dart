@@ -114,13 +114,17 @@ class RoundedDonutChart extends StatelessWidget {
         if (showLegend && data.isNotEmpty) ...[
           SizedBox(height: legendSpacing * 3),
           UnifiedLegend(
-            items: data.map((segment) => LegendItem(
-              id: segment.id,
-              label: segment.label,
-              color: segment.color,
-              emoji: segment.emoji,
-              value: showCountInLegend ? segment.value.toInt().toString() : null,
-            )).toList(),
+            items: data
+                .map((segment) => LegendItem(
+                      id: segment.id,
+                      label: segment.label,
+                      color: segment.color,
+                      emoji: segment.emoji,
+                      value: showCountInLegend
+                          ? segment.value.toInt().toString()
+                          : null,
+                    ))
+                .toList(),
             style: legendStyle,
             showValueInIndicator: showCountInLegend,
             columns: legendColumns,
@@ -157,8 +161,7 @@ class RoundedDonutChart extends StatelessWidget {
   /// Build the donut chart based on data state
   Widget _buildDonutChart(DonutChartConfig chartConfig) {
     // Filter valid segments (value > 0)
-    final validSegments =
-        data.where((segment) => segment.value > 0).toList();
+    final validSegments = data.where((segment) => segment.value > 0).toList();
 
     // Empty state
     if (validSegments.isEmpty) {

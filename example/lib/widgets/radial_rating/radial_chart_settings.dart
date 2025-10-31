@@ -21,7 +21,14 @@ void showRadialChartSettings({
   required LegendStyle legendStyle,
   required bool showRatingInLegend,
   required int legendColumns,
-  required Function(ChartConfig config, bool showLegend, LegendStyle legendStyle, bool showRatingInLegend, int legendColumns) onApply,
+  required Function(
+    ChartConfig config,
+    bool showLegend,
+    LegendStyle legendStyle,
+    bool showRatingInLegend,
+    int legendColumns,
+  )
+  onApply,
 }) {
   showModalBottomSheet(
     context: context,
@@ -43,7 +50,14 @@ class _RadialChartSettingsSheet extends StatefulWidget {
   final LegendStyle legendStyle;
   final bool showRatingInLegend;
   final int legendColumns;
-  final Function(ChartConfig config, bool showLegend, LegendStyle legendStyle, bool showRatingInLegend, int legendColumns) onApply;
+  final Function(
+    ChartConfig config,
+    bool showLegend,
+    LegendStyle legendStyle,
+    bool showRatingInLegend,
+    int legendColumns,
+  )
+  onApply;
 
   const _RadialChartSettingsSheet({
     required this.config,
@@ -55,7 +69,8 @@ class _RadialChartSettingsSheet extends StatefulWidget {
   });
 
   @override
-  State<_RadialChartSettingsSheet> createState() => _RadialChartSettingsSheetState();
+  State<_RadialChartSettingsSheet> createState() =>
+      _RadialChartSettingsSheetState();
 }
 
 class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
@@ -107,7 +122,9 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(16),
+                  ),
                 ),
                 child: Row(
                   children: [
@@ -116,8 +133,8 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                     Text(
                       'Chart Settings',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const Spacer(),
                     IconButton(
@@ -153,7 +170,8 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                       min: 5,
                       max: 20,
                       divisions: 15,
-                      onChanged: (value) => setState(() => _gridLevels = value.round()),
+                      onChanged: (value) =>
+                          setState(() => _gridLevels = value.round()),
                     ),
 
                     const SizedBox(height: 16),
@@ -166,7 +184,8 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                       max: 3.0,
                       divisions: 25,
                       suffix: ' px',
-                      onChanged: (value) => setState(() => _gridStrokeWidth = value),
+                      onChanged: (value) =>
+                          setState(() => _gridStrokeWidth = value),
                     ),
 
                     const SizedBox(height: 16),
@@ -178,7 +197,8 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                       min: 0.0,
                       max: 1.0,
                       divisions: 10,
-                      onChanged: (value) => setState(() => _segmentOpacity = value),
+                      onChanged: (value) =>
+                          setState(() => _segmentOpacity = value),
                     ),
 
                     const SizedBox(height: 16),
@@ -187,7 +207,8 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                     _buildSwitchSetting(
                       title: 'Show Segment Borders',
                       value: _showSegmentBorders,
-                      onChanged: (value) => setState(() => _showSegmentBorders = value),
+                      onChanged: (value) =>
+                          setState(() => _showSegmentBorders = value),
                     ),
 
                     const SizedBox(height: 16),
@@ -200,7 +221,8 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                       max: 3.0,
                       divisions: 29,
                       suffix: ' px',
-                      onChanged: (value) => setState(() => _segmentBorderWidth = value),
+                      onChanged: (value) =>
+                          setState(() => _segmentBorderWidth = value),
                       enabled: _showSegmentBorders,
                     ),
 
@@ -221,8 +243,8 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                     Text(
                       'Legend Settings',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
 
                     const SizedBox(height: 16),
@@ -249,7 +271,8 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                         child: _buildSwitchSetting(
                           title: 'Show Rating in Legend',
                           value: _showRatingInLegend,
-                          onChanged: (value) => setState(() => _showRatingInLegend = value),
+                          onChanged: (value) =>
+                              setState(() => _showRatingInLegend = value),
                         ),
                       ),
                     ),
@@ -263,7 +286,8 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                       min: 1,
                       max: 3,
                       divisions: 2,
-                      onChanged: (value) => setState(() => _legendColumns = value.round()),
+                      onChanged: (value) =>
+                          setState(() => _legendColumns = value.round()),
                       enabled: _showLegend,
                     ),
                   ],
@@ -296,7 +320,13 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                         segmentBorderWidth: _segmentBorderWidth,
                         gridColor: _gridColor,
                       );
-                      widget.onApply(newConfig, _showLegend, _legendStyle, _showRatingInLegend, _legendColumns);
+                      widget.onApply(
+                        newConfig,
+                        _showLegend,
+                        _legendStyle,
+                        _showRatingInLegend,
+                        _legendColumns,
+                      );
                       Navigator.pop(context);
                     },
                     child: const Text('Apply Settings'),
@@ -320,23 +350,22 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
     bool enabled = true,
     String suffix = '',
   }) {
-    final displayValue = value % 1 == 0 ? value.toInt().toString() : value.toStringAsFixed(1);
+    final displayValue = value % 1 == 0
+        ? value.toInt().toString()
+        : value.toStringAsFixed(1);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              title,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
+            Text(title, style: Theme.of(context).textTheme.bodyLarge),
             Text(
               '$displayValue$suffix',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: enabled ? null : Theme.of(context).disabledColor,
-                  ),
+                fontWeight: FontWeight.bold,
+                color: enabled ? null : Theme.of(context).disabledColor,
+              ),
             ),
           ],
         ),
@@ -360,14 +389,8 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
-        Switch(
-          value: value,
-          onChanged: onChanged,
-        ),
+        Text(title, style: Theme.of(context).textTheme.bodyLarge),
+        Switch(value: value, onChanged: onChanged),
       ],
     );
   }
@@ -389,10 +412,7 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
+        Text(title, style: Theme.of(context).textTheme.bodyLarge),
         const SizedBox(height: 8),
         Wrap(
           spacing: 8,
@@ -415,11 +435,7 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
                   ),
                 ),
                 child: isSelected
-                    ? const Icon(
-                        Icons.check,
-                        color: Colors.black54,
-                        size: 20,
-                      )
+                    ? const Icon(Icons.check, color: Colors.black54, size: 20)
                     : null,
               ),
             );
@@ -436,8 +452,8 @@ class _RadialChartSettingsSheetState extends State<_RadialChartSettingsSheet> {
         Text(
           'Legend Style',
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: _showLegend ? null : Theme.of(context).disabledColor,
-              ),
+            color: _showLegend ? null : Theme.of(context).disabledColor,
+          ),
         ),
         const SizedBox(height: 8),
         SegmentedButton<LegendStyle>(

@@ -28,7 +28,8 @@ void showDonutChartSettings({
     LegendStyle legendStyle,
     int legendColumns,
     bool showCountInLegend,
-  ) onApply,
+  )
+  onApply,
 }) {
   showModalBottomSheet(
     context: context,
@@ -56,7 +57,8 @@ class _DonutChartSettingsSheet extends StatefulWidget {
     LegendStyle legendStyle,
     int legendColumns,
     bool showCountInLegend,
-  ) onApply;
+  )
+  onApply;
 
   const _DonutChartSettingsSheet({
     required this.config,
@@ -68,7 +70,8 @@ class _DonutChartSettingsSheet extends StatefulWidget {
   });
 
   @override
-  State<_DonutChartSettingsSheet> createState() => _DonutChartSettingsSheetState();
+  State<_DonutChartSettingsSheet> createState() =>
+      _DonutChartSettingsSheetState();
 }
 
 class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
@@ -112,7 +115,9 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(16),
+                  ),
                 ),
                 child: Row(
                   children: [
@@ -121,8 +126,8 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
                     Text(
                       'Chart Settings',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const Spacer(),
                     IconButton(
@@ -147,7 +152,8 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
                       max: 200,
                       divisions: 30,
                       suffix: ' px',
-                      onChanged: (value) => setState(() => _outerRadius = value),
+                      onChanged: (value) =>
+                          setState(() => _outerRadius = value),
                     ),
 
                     const SizedBox(height: 16),
@@ -160,7 +166,8 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
                       max: 150,
                       divisions: 24,
                       suffix: ' px',
-                      onChanged: (value) => setState(() => _innerRadius = value),
+                      onChanged: (value) =>
+                          setState(() => _innerRadius = value),
                     ),
 
                     const SizedBox(height: 16),
@@ -169,7 +176,8 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
                     _buildColorSetting(
                       title: 'Empty State Color',
                       color: _emptyStateColor,
-                      onChanged: (color) => setState(() => _emptyStateColor = color),
+                      onChanged: (color) =>
+                          setState(() => _emptyStateColor = color),
                     ),
 
                     const Divider(height: 32),
@@ -178,8 +186,8 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
                     Text(
                       'Legend Settings',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
 
                     const SizedBox(height: 16),
@@ -205,7 +213,8 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
                       min: 1,
                       max: 3,
                       divisions: 2,
-                      onChanged: (value) => setState(() => _legendColumns = value.round()),
+                      onChanged: (value) =>
+                          setState(() => _legendColumns = value.round()),
                       enabled: _showLegend,
                     ),
 
@@ -215,7 +224,8 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
                     _buildSwitchSetting(
                       title: 'Show Count in Legend',
                       value: _showCountInLegend,
-                      onChanged: (value) => setState(() => _showCountInLegend = value),
+                      onChanged: (value) =>
+                          setState(() => _showCountInLegend = value),
                       enabled: _showLegend,
                     ),
                   ],
@@ -274,7 +284,9 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
     bool enabled = true,
     String suffix = '',
   }) {
-    final displayValue = value % 1 == 0 ? value.toInt().toString() : value.toStringAsFixed(1);
+    final displayValue = value % 1 == 0
+        ? value.toInt().toString()
+        : value.toStringAsFixed(1);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -284,15 +296,15 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
             Text(
               title,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: enabled ? null : Theme.of(context).disabledColor,
-                  ),
+                color: enabled ? null : Theme.of(context).disabledColor,
+              ),
             ),
             Text(
               '$displayValue$suffix',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: enabled ? null : Theme.of(context).disabledColor,
-                  ),
+                fontWeight: FontWeight.bold,
+                color: enabled ? null : Theme.of(context).disabledColor,
+              ),
             ),
           ],
         ),
@@ -320,13 +332,10 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
         Text(
           title,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: enabled ? null : Theme.of(context).disabledColor,
-              ),
+            color: enabled ? null : Theme.of(context).disabledColor,
+          ),
         ),
-        Switch(
-          value: value,
-          onChanged: enabled ? onChanged : null,
-        ),
+        Switch(value: value, onChanged: enabled ? onChanged : null),
       ],
     );
   }
@@ -348,10 +357,7 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
+        Text(title, style: Theme.of(context).textTheme.bodyLarge),
         const SizedBox(height: 8),
         Wrap(
           spacing: 8,
@@ -374,11 +380,7 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
                   ),
                 ),
                 child: isSelected
-                    ? const Icon(
-                        Icons.check,
-                        color: Colors.black54,
-                        size: 20,
-                      )
+                    ? const Icon(Icons.check, color: Colors.black54, size: 20)
                     : null,
               ),
             );
@@ -395,8 +397,8 @@ class _DonutChartSettingsSheetState extends State<_DonutChartSettingsSheet> {
         Text(
           'Legend Style',
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: _showLegend ? null : Theme.of(context).disabledColor,
-              ),
+            color: _showLegend ? null : Theme.of(context).disabledColor,
+          ),
         ),
         const SizedBox(height: 8),
         SegmentedButton<LegendStyle>(

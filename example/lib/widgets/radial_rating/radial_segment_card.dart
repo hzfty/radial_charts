@@ -43,7 +43,9 @@ class _RadialSegmentCardState extends State<RadialSegmentCard> {
     super.initState();
     _nameController = TextEditingController(text: widget.segment.name);
     _emojiController = TextEditingController(text: widget.segment.emoji);
-    _descriptionController = TextEditingController(text: widget.segment.description);
+    _descriptionController = TextEditingController(
+      text: widget.segment.description,
+    );
   }
 
   @override
@@ -83,10 +85,12 @@ class _RadialSegmentCardState extends State<RadialSegmentCard> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    widget.segment.name.isEmpty ? 'Unnamed Segment' : widget.segment.name,
+                    widget.segment.name.isEmpty
+                        ? 'Unnamed Segment'
+                        : widget.segment.name,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 IconButton(
@@ -115,10 +119,7 @@ class _RadialSegmentCardState extends State<RadialSegmentCard> {
             // Rating slider
             Row(
               children: [
-                Text(
-                  'Rating:',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
+                Text('Rating:', style: Theme.of(context).textTheme.bodyMedium),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Slider(
@@ -140,8 +141,8 @@ class _RadialSegmentCardState extends State<RadialSegmentCard> {
                   child: Text(
                     '${widget.segment.rating}',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      fontWeight: FontWeight.bold,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -154,10 +155,7 @@ class _RadialSegmentCardState extends State<RadialSegmentCard> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Color:',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
+                Text('Color:', style: Theme.of(context).textTheme.bodyMedium),
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 8,
@@ -186,10 +184,9 @@ class _RadialSegmentCardState extends State<RadialSegmentCard> {
                           boxShadow: isSelected
                               ? [
                                   BoxShadow(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .primary
-                                        .withOpacity(0.3),
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.primary.withValues(alpha: 0.3),
                                     blurRadius: 8,
                                     spreadRadius: 2,
                                   ),

@@ -51,9 +51,7 @@ class _RadialRatingDemoScreenState extends State<RadialRatingDemoScreen> {
 
   void _addSegment() {
     setState(() {
-      _segments.add(
-        RadialSegmentModel.createDefault(_segments.length),
-      );
+      _segments.add(RadialSegmentModel.createDefault(_segments.length));
     });
   }
 
@@ -73,21 +71,22 @@ class _RadialRatingDemoScreenState extends State<RadialRatingDemoScreen> {
       legendStyle: _legendStyle,
       showRatingInLegend: _showRatingInLegend,
       legendColumns: _legendColumns,
-      onApply: (config, showLegend, legendStyle, showRatingInLegend, legendColumns) {
-        setState(() {
-          _chartSize = config.size;
-          _gridLevels = config.gridLevels;
-          _gridStrokeWidth = config.gridStrokeWidth;
-          _segmentOpacity = config.segmentOpacity;
-          _showSegmentBorders = config.showSegmentBorders;
-          _segmentBorderWidth = config.segmentBorderWidth;
-          _gridColor = config.gridColor;
-          _showLegend = showLegend;
-          _legendStyle = legendStyle;
-          _showRatingInLegend = showRatingInLegend;
-          _legendColumns = legendColumns;
-        });
-      },
+      onApply:
+          (config, showLegend, legendStyle, showRatingInLegend, legendColumns) {
+            setState(() {
+              _chartSize = config.size;
+              _gridLevels = config.gridLevels;
+              _gridStrokeWidth = config.gridStrokeWidth;
+              _segmentOpacity = config.segmentOpacity;
+              _showSegmentBorders = config.showSegmentBorders;
+              _segmentBorderWidth = config.segmentBorderWidth;
+              _gridColor = config.gridColor;
+              _showLegend = showLegend;
+              _legendStyle = legendStyle;
+              _showRatingInLegend = showRatingInLegend;
+              _legendColumns = legendColumns;
+            });
+          },
     );
   }
 
@@ -135,15 +134,15 @@ class _RadialRatingDemoScreenState extends State<RadialRatingDemoScreen> {
               children: [
                 Text(
                   'Segments',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 Text(
                   '${_segments.length} total',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.grey[600],
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
                 ),
               ],
             ),

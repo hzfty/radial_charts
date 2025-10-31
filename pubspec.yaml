@@ -1,5 +1,5 @@
 name: radial_charts
-description: A collection of customizable radial chart widgets for Flutter. Display ratings and data across multiple categories with variable radius segments, perfect for visualizing assessments, reviews, and multi-dimensional data.
+description: Customizable radial chart widgets for Flutter rating charts and rounded donut charts with legends, emojis, and smooth animations.
 version: 0.2.0
 homepage: https://github.com/hzfty/radial_charts
 repository: https://github.com/hzfty/radial_charts
@@ -29,11 +29,9 @@ platforms:
   windows:
 
 screenshots:
-  - description: 'Life Balance visualization with 11 categories showing personal development areas'
-    path: screenshots/1-life-balance.png
-  - description: 'Skills Assessment chart displaying technical and soft skills ratings'
-    path: screenshots/2-skills-assessment.png
-  - description: 'Product Features evaluation with 5 key metrics'
-    path: screenshots/3-product-features.png
-  - description: 'Custom Weekly Mood tracker example with emoji indicators'
-    path: screenshots/4-custom-example.png
+  - description: 'Radial Charts logo - customizable chart widgets for Flutter'
+    path: screenshots/radial_charts_logo.jpg
+  - description: 'Radial Rating Chart demo - interactive rating chart with customizable categories, legends, and emoji support'
+    path: screenshots/GIF_radial_rating_chart.gif
+  - description: 'Rounded Donut Chart demo - smooth rounded edges with Bezier curves, center text, and flexible legend styles'
+    path: screenshots/GIF_rounded_donut_chart.gif

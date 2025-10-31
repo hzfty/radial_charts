@@ -51,7 +51,7 @@ void main() {
 
       expect(config.size, 280.0);
       expect(config.maxRating, 10);
-      expect(config.minRating, 1);
+      expect(config.minRating, 0);
       expect(config.gridLevels, 10);
       expect(config.segmentOpacity, 0.7);
     });

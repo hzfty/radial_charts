@@ -41,7 +41,8 @@ class RadialChartPainter extends CustomPainter {
   /// Prepare data: filter valid entries and optionally sort
   List<CategoryData> _prepareData() {
     // Filter data with ratings at or above minimum
-    var validData = data.where((item) => item.rating >= config.minRating).toList();
+    var validData =
+        data.where((item) => item.rating >= config.minRating).toList();
 
     // Sort by category ID if configured
     if (config.sortCategoriesById) {
@@ -52,7 +53,8 @@ class RadialChartPainter extends CustomPainter {
   }
 
   /// Draw the grid (concentric circles and radial lines)
-  void _drawGrid(Canvas canvas, Offset center, double radius, List<CategoryData> validData) {
+  void _drawGrid(Canvas canvas, Offset center, double radius,
+      List<CategoryData> validData) {
     final gridPaint = Paint()
       ..color = config.gridColor
       ..style = PaintingStyle.stroke
@@ -81,7 +83,8 @@ class RadialChartPainter extends CustomPainter {
   }
 
   /// Draw filled segments for each category
-  void _drawSegments(Canvas canvas, Offset center, double radius, List<CategoryData> validData) {
+  void _drawSegments(Canvas canvas, Offset center, double radius,
+      List<CategoryData> validData) {
     final angleStep = 2 * math.pi / validData.length;
 
     for (int i = 0; i < validData.length; i++) {
@@ -92,7 +95,8 @@ class RadialChartPainter extends CustomPainter {
       final segmentRadius = radius * normalizedRating;
 
       // Get category color
-      final segmentColor = item.category.color.withValues(alpha: config.segmentOpacity);
+      final segmentColor =
+          item.category.color.withValues(alpha: config.segmentOpacity);
 
       // Paint for filled segment
       final segmentPaint = Paint()
@@ -123,7 +127,8 @@ class RadialChartPainter extends CustomPainter {
         // Draw border if enabled
         if (config.showSegmentBorders) {
           final borderPaint = Paint()
-            ..color = config.segmentBorderColor ?? segmentColor.withValues(alpha: 0.8)
+            ..color =
+                config.segmentBorderColor ?? segmentColor.withValues(alpha: 0.8)
             ..style = PaintingStyle.stroke
             ..strokeWidth = config.segmentBorderWidth;
 

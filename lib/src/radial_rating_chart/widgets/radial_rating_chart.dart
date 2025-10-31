@@ -106,25 +106,28 @@ class RadialRatingChart extends StatelessWidget {
   /// Build the legend widget using UnifiedLegend
   Widget _buildLegend() {
     // Filter valid data (same as painter does)
-    final validData = data
-        .where((item) => item.rating >= (config?.minRating ?? 0))
-        .toList();
+    final validData =
+        data.where((item) => item.rating >= (config?.minRating ?? 0)).toList();
 
     if (validData.isEmpty) return const SizedBox.shrink();
 
     // Determine indicator size based on whether we're showing ratings
-    final indicatorSize = showRatingInLegend && legendStyle != LegendStyle.circle
-        ? const Size(33, 28)
-        : Size(legendIndicatorSize, legendIndicatorSize);
+    final indicatorSize =
+        showRatingInLegend && legendStyle != LegendStyle.circle
+            ? const Size(33, 28)
+            : Size(legendIndicatorSize, legendIndicatorSize);
 
     return UnifiedLegend(
-      items: validData.map((item) => LegendItem(
-        id: item.id,
-        label: item.category.name,
-        color: item.category.color,
-        emoji: item.category.emoji,
-        value: showRatingInLegend ? item.rating.toInt().toString() : null,
-      )).toList(),
+      items: validData
+          .map((item) => LegendItem(
+                id: item.id,
+                label: item.category.name,
+                color: item.category.color,
+                emoji: item.category.emoji,
+                value:
+                    showRatingInLegend ? item.rating.toInt().toString() : null,
+              ))
+          .toList(),
       style: legendStyle,
       showValueInIndicator: showRatingInLegend,
       columns: legendColumns,

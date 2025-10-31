@@ -64,5 +64,6 @@ class CategoryData {
   int get hashCode => category.hashCode ^ rating.hashCode;
 
   @override
-  String toString() => 'CategoryData(category: ${category.name}, rating: $rating)';
+  String toString() =>
+      'CategoryData(category: ${category.name}, rating: $rating)';
 }

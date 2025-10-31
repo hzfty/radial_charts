@@ -35,22 +35,13 @@ class DemoTabScreen extends StatelessWidget {
           title: const Text('Radial Charts Demo'),
           bottom: const TabBar(
             tabs: [
-              Tab(
-                icon: Icon(Icons.radar),
-                text: 'Radial Rating',
-              ),
-              Tab(
-                icon: Icon(Icons.donut_small),
-                text: 'Rounded Donut',
-              ),
+              Tab(icon: Icon(Icons.radar), text: 'Radial Rating'),
+              Tab(icon: Icon(Icons.donut_small), text: 'Rounded Donut'),
             ],
           ),
         ),
         body: const TabBarView(
-          children: [
-            RadialRatingDemoScreen(),
-            RoundedDonutDemoScreen(),
-          ],
+          children: [RadialRatingDemoScreen(), RoundedDonutDemoScreen()],
         ),
       ),
     );

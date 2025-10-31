@@ -42,7 +42,9 @@ class _DonutSegmentCardState extends State<DonutSegmentCard> {
     super.initState();
     _labelController = TextEditingController(text: widget.segment.label);
     _emojiController = TextEditingController(text: widget.segment.emoji);
-    _descriptionController = TextEditingController(text: widget.segment.description);
+    _descriptionController = TextEditingController(
+      text: widget.segment.description,
+    );
   }
 
   @override
@@ -82,10 +84,12 @@ class _DonutSegmentCardState extends State<DonutSegmentCard> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    widget.segment.label.isEmpty ? 'Unnamed Segment' : widget.segment.label,
+                    widget.segment.label.isEmpty
+                        ? 'Unnamed Segment'
+                        : widget.segment.label,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 IconButton(
@@ -129,10 +133,7 @@ class _DonutSegmentCardState extends State<DonutSegmentCard> {
             // Value slider
             Row(
               children: [
-                Text(
-                  'Value:',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
+                Text('Value:', style: Theme.of(context).textTheme.bodyMedium),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Slider(
@@ -154,8 +155,8 @@ class _DonutSegmentCardState extends State<DonutSegmentCard> {
                   child: Text(
                     widget.segment.value.toStringAsFixed(0),
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      fontWeight: FontWeight.bold,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -168,10 +169,7 @@ class _DonutSegmentCardState extends State<DonutSegmentCard> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Color:',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
+                Text('Color:', style: Theme.of(context).textTheme.bodyMedium),
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 8,
@@ -200,9 +198,7 @@ class _DonutSegmentCardState extends State<DonutSegmentCard> {
                           boxShadow: isSelected
                               ? [
                                   BoxShadow(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .primary
+                                    color: Theme.of(context).colorScheme.primary
                                         .withValues(alpha: 0.3),
                                     blurRadius: 8,
                                     spreadRadius: 2,

@@ -1,4 +1,4 @@
-# Radial Charts
+# <img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/radial_charts_logo.jpg" height="40"/> Radial Charts
 
 A collection of customizable radial chart widgets for Flutter. Display ratings and data across multiple categories with variable radius segments, perfect for visualizing assessments, reviews, and multi-dimensional data.
 
@@ -8,31 +8,32 @@ A collection of customizable radial chart widgets for Flutter. Display ratings a
 ## Features
 
 ✨ **Variable Radius Segments** - Each category's segment radius represents its rating value
-🍩 **Rounded Donut Chart** - NEW! Donut chart with smooth, rounded segment edges
-🎨 **Highly Customizable** - Colors, grid levels, opacity, borders, and more
-📦 **Predefined Categories** - Life balance, skills, product features templates
-📊 **Legend Support** - Optional legend with customizable layout (multiple styles)
-🚀 **Zero Dependencies** - Pure Flutter implementation
-⚡ **Performance Optimized** - Efficient CustomPainter rendering
+🍩 **Rounded Donut Chart** - NEW in v0.2.0! Donut chart with smooth, rounded segment edges using Bezier curves
+🎨 **Highly Customizable** - Colors, grid levels, opacity, borders, center text, and more
+📦 **Predefined Categories** - Life balance, skills, product features templates with emojis
+📊 **Unified Legend System** - Shared legend architecture with three styles (circle, rectangle, roundedRectangle)
+😀 **Emoji Support** - Add emojis to categories and display them in legends
+🚀 **Zero Dependencies** - Pure Flutter implementation using CustomPainter
+⚡ **Performance Optimized** - Efficient rendering with smooth animations
 
-## Screenshots
+## Demo
 
 <table>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/1-life-balance.png" alt="Life Balance" width="300"/></td>
-    <td><img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/2-skills-assessment.png" alt="Skills Assessment" width="300"/></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Life Balance</b></td>
-    <td align="center"><b>Skills Assessment</b></td>
-  </tr>
-  <tr>
-    <td><img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/3-product-features.png" alt="Product Features" width="300"/></td>
-    <td><img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/4-custom-example.png" alt="Custom Example" width="300"/></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Product Features</b></td>
-    <td align="center"><b>Custom Example (Weekly Mood)</b></td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/GIF_radial_rating_chart.gif" alt="Radial Rating Chart Demo" width="400"/>
+      <br/>
+      <b>Radial Rating Chart</b>
+      <br/>
+      <em>Interactive rating chart with customizable categories, legends, and emoji support</em>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/GIF_rounded_donut_chart.gif" alt="Rounded Donut Chart Demo" width="400"/>
+      <br/>
+      <b>Rounded Donut Chart (NEW in v0.2.0)</b>
+      <br/>
+      <em>Smooth rounded edges with Bezier curves, center text, and flexible legend styles</em>
+    </td>
   </tr>
 </table>
 
@@ -142,9 +143,18 @@ RadialRatingChart(
 
 ## Rounded Donut Chart
 
-### Basic Example
+**NEW in v0.2.0!** The `RoundedDonutChart` widget displays data as a donut chart with beautifully rounded, smooth edges between segments.
 
-The `RoundedDonutChart` widget displays data as a donut chart with beautifully rounded, smooth edges between segments.
+### Key Features
+
+- **Smooth Bezier Curve Transitions** - Elegant rounded edges between segments instead of sharp corners
+- **Configurable Center Text** - Display totals or custom text in the center with automatic calculation
+- **Three Legend Styles** - Choose between circle, rectangle, or roundedRectangle indicators
+- **Empty State Visualization** - Graceful display when no data is available
+- **Single Segment Support** - Smart handling of charts with just one segment
+- **Emoji Support** - Add emojis to segment labels for visual clarity
+
+### Basic Example
 
 ```dart
 import 'package:flutter/material.dart';
@@ -227,10 +237,12 @@ Main widget for displaying the chart.
 | `data` | `List<CategoryData>` | required | List of category data to display |
 | `config` | `ChartConfig?` | `ChartConfig()` | Configuration for chart appearance |
 | `showLegend` | `bool` | `false` | Whether to show legend |
+| `showRatingInLegend` | `bool` | `false` | Show rating values inside legend indicators (NEW in v0.2.0) |
 | `legendColumns` | `int` | `2` | Number of columns in legend |
 | `legendSpacing` | `double` | `8.0` | Spacing between legend items |
 | `legendIndicatorSize` | `double` | `16.0` | Size of color indicator |
-| `legendTextStyle` | `TextStyle?` | `null` | Text style for legend |
+| `legendTextStyle` | `TextStyle?` | `null` | Text style for legend labels |
+| `legendRatingStyle` | `TextStyle?` | `null` | Text style for rating values in legend (NEW in v0.2.0) |
 
 ### ChartCategory
 
@@ -261,7 +273,7 @@ Configuration for chart appearance.
 |----------|------|---------|-------------|
 | `size` | `double` | `280.0` | Chart size (width & height) |
 | `maxRating` | `int` | `10` | Maximum rating value |
-| `minRating` | `int` | `1` | Minimum rating value |
+| `minRating` | `int` | `0` | Minimum rating value |
 | `gridLevels` | `int` | `10` | Number of concentric circles |
 | `gridColor` | `Color` | `Color(0x4D000000)` | Grid line color |
 | `gridStrokeWidth` | `double` | `1.0` | Grid line width |
@@ -380,7 +392,17 @@ Created by [hzfty](https://github.com/hzfty)
 
 If you find this package useful, please give it a ⭐ on GitHub!
 
-For bugs or feature requests, please file an issue on GitHub Issues.
+For bugs or feature requests, please file an [issue on GitHub](https://github.com/hzfty/radial_charts/issues).
+
+## Contact & Feedback
+
+We'd love to hear from you! Whether you have questions, suggestions, or just want to share how you're using radial_charts:
+
+- **Telegram**: [@dosavelyev](https://t.me/dosavelyev)
+- **Email**: [hzftyone@gmail.com](mailto:hzftyone@gmail.com)
+- **GitHub Issues**: [Report bugs or request features](https://github.com/hzfty/radial_charts/issues)
+
+Your feedback helps make this package better for everyone!
 
 ## Changelog
 

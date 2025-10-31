@@ -97,5 +97,6 @@ class ChartConfig {
   }
 
   @override
-  String toString() => 'ChartConfig(size: $size, maxRating: $maxRating, gridLevels: $gridLevels)';
+  String toString() =>
+      'ChartConfig(size: $size, maxRating: $maxRating, gridLevels: $gridLevels)';
 }

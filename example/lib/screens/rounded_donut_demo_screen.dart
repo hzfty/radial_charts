@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:radial_charts/radial_charts.dart';
 import '../models/donut_segment_model.dart';
 import '../widgets/rounded_donut/donut_segment_card.dart';
-import '../widgets/rounded_donut/center_text_settings.dart' show CenterTextSettings, CenterTextMode;
+import '../widgets/rounded_donut/center_text_settings.dart'
+    show CenterTextSettings, CenterTextMode;
 import '../widgets/rounded_donut/donut_chart_settings.dart';
 
 class RoundedDonutDemoScreen extends StatefulWidget {
@@ -52,9 +53,7 @@ class _RoundedDonutDemoScreenState extends State<RoundedDonutDemoScreen> {
 
   void _addSegment() {
     setState(() {
-      _segments.add(
-        DonutSegmentModel.createDefault(_segments.length),
-      );
+      _segments.add(DonutSegmentModel.createDefault(_segments.length));
     });
   }
 
@@ -70,17 +69,18 @@ class _RoundedDonutDemoScreenState extends State<RoundedDonutDemoScreen> {
       legendStyle: _legendStyle,
       legendColumns: _legendColumns,
       showCountInLegend: _showCountInLegend,
-      onApply: (config, showLegend, legendStyle, legendColumns, showCountInLegend) {
-        setState(() {
-          _outerRadius = config.outerRadius;
-          _innerRadius = config.innerRadius;
-          _emptyStateColor = config.emptyStateColor;
-          _showLegend = showLegend;
-          _legendStyle = legendStyle;
-          _legendColumns = legendColumns;
-          _showCountInLegend = showCountInLegend;
-        });
-      },
+      onApply:
+          (config, showLegend, legendStyle, legendColumns, showCountInLegend) {
+            setState(() {
+              _outerRadius = config.outerRadius;
+              _innerRadius = config.innerRadius;
+              _emptyStateColor = config.emptyStateColor;
+              _showLegend = showLegend;
+              _legendStyle = legendStyle;
+              _legendColumns = legendColumns;
+              _showCountInLegend = showCountInLegend;
+            });
+          },
     );
   }
 
@@ -156,15 +156,15 @@ class _RoundedDonutDemoScreenState extends State<RoundedDonutDemoScreen> {
               children: [
                 Text(
                   'Segments',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 Text(
                   '${_segments.length} total',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.grey[600],
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
                 ),
               ],
             ),
