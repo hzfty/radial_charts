@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2025-10-31
+
+### Changed
+- Optimized GIF screenshots to meet pub.dev 4MB file size limit (reduced from 4+ MB to ~3 MB each)
+- Improved package description for better clarity and professionalism
+- Reduced total package size from 10 MB to 5 MB
+
+### Fixed
+- Fixed package screenshots exceeding pub.dev file size limit
+
 ## [0.2.0] - 2025-10-31
 
 ### Added

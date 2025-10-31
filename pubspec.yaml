@@ -1,6 +1,6 @@
 name: radial_charts
-description: Customizable radial chart widgets for Flutter rating charts and rounded donut charts with legends, emojis, and smooth animations.
-version: 0.2.0
+description: Flutter widgets for radial rating charts and rounded donut charts with customizable legends, emoji support, and smooth animations.
+version: 0.2.1
 homepage: https://github.com/hzfty/radial_charts
 repository: https://github.com/hzfty/radial_charts
 issue_tracker: https://github.com/hzfty/radial_charts/issues
