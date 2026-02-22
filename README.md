@@ -1,6 +1,6 @@
 # <img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/radial_charts_logo.jpg" height="40"/> Radial Charts
 
-A collection of customizable radial chart widgets for Flutter. Display ratings and data across multiple categories with variable radius segments, perfect for visualizing assessments, reviews, and multi-dimensional data.
+A collection of customizable radial chart widgets for Flutter — **RadialRatingChart** and **RoundedDonutChart**. Display ratings and data across multiple categories with variable radius segments, smooth Bezier-curved donut charts, customizable legends, and emoji support.
 
 [![pub package](https://img.shields.io/pub/v/radial_charts.svg)](https://pub.dev/packages/radial_charts)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -8,12 +8,19 @@ A collection of customizable radial chart widgets for Flutter. Display ratings a
 ## Features
 
 ✨ **Variable Radius Segments** - Each category's segment radius represents its rating value
-🍩 **Rounded Donut Chart** - NEW in v0.2.0! Donut chart with smooth, rounded segment edges using Bezier curves
+
+🍩 **Rounded Donut Chart** - Donut chart with smooth, rounded segment edges using Bezier curves
+
 🎨 **Highly Customizable** - Colors, grid levels, opacity, borders, center text, and more
+
 📦 **Predefined Categories** - Life balance, skills, product features templates with emojis
+
 📊 **Unified Legend System** - Shared legend architecture with three styles (circle, rectangle, roundedRectangle)
+
 😀 **Emoji Support** - Add emojis to categories and display them in legends
+
 🚀 **Zero Dependencies** - Pure Flutter implementation using CustomPainter
+
 ⚡ **Performance Optimized** - Efficient rendering with smooth animations
 
 ## Demo
@@ -21,21 +28,23 @@ A collection of customizable radial chart widgets for Flutter. Display ratings a
 <table>
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/GIF_radial_rating_chart.gif" alt="Radial Rating Chart Demo" width="400"/>
+      <img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/radial_rating_chart.jpg" alt="Radial Rating Chart" width="400"/>
       <br/>
       <b>Radial Rating Chart</b>
       <br/>
       <em>Interactive rating chart with customizable categories, legends, and emoji support</em>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/GIF_rounded_donut_chart.gif" alt="Rounded Donut Chart Demo" width="400"/>
+      <img src="https://raw.githubusercontent.com/hzfty/radial_charts/main/screenshots/rounded_donut_chart.jpg" alt="Rounded Donut Chart" width="400"/>
       <br/>
-      <b>Rounded Donut Chart (NEW in v0.2.0)</b>
+      <b>Rounded Donut Chart</b>
       <br/>
       <em>Smooth rounded edges with Bezier curves, center text, and flexible legend styles</em>
     </td>
   </tr>
 </table>
+
+> 💡 Want to explore all settings interactively? Run the [example app](example/) — it includes sliders, color pickers, and live preview for every chart parameter.
 
 ## Installation
 
@@ -43,7 +52,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  radial_charts: ^0.2.1
+  radial_charts: ^0.2.2
 ```
 
 Then run:
@@ -143,7 +152,7 @@ RadialRatingChart(
 
 ## Rounded Donut Chart
 
-**NEW in v0.2.0!** The `RoundedDonutChart` widget displays data as a donut chart with beautifully rounded, smooth edges between segments.
+The `RoundedDonutChart` widget displays data as a donut chart with smooth, rounded edges between segments.
 
 ### Key Features
 
@@ -237,12 +246,12 @@ Main widget for displaying the chart.
 | `data` | `List<CategoryData>` | required | List of category data to display |
 | `config` | `ChartConfig?` | `ChartConfig()` | Configuration for chart appearance |
 | `showLegend` | `bool` | `false` | Whether to show legend |
-| `showRatingInLegend` | `bool` | `false` | Show rating values inside legend indicators (NEW in v0.2.0) |
+| `showRatingInLegend` | `bool` | `false` | Show rating values inside legend indicators |
 | `legendColumns` | `int` | `2` | Number of columns in legend |
 | `legendSpacing` | `double` | `8.0` | Spacing between legend items |
 | `legendIndicatorSize` | `double` | `16.0` | Size of color indicator |
 | `legendTextStyle` | `TextStyle?` | `null` | Text style for legend labels |
-| `legendRatingStyle` | `TextStyle?` | `null` | Text style for rating values in legend (NEW in v0.2.0) |
+| `legendRatingStyle` | `TextStyle?` | `null` | Text style for rating values in legend |
 
 ### ChartCategory
 
@@ -359,22 +368,27 @@ flutter run
 
 ## Use Cases
 
-- 📊 **Life Balance Wheels** - Track satisfaction across life areas
-- 💼 **Skills Assessment** - Visualize competency levels
-- ⭐ **Product Reviews** - Display multi-dimensional ratings
-- 📈 **Performance Metrics** - Show KPIs across categories
-- 🎯 **Goal Tracking** - Monitor progress in different areas
-- 📝 **Survey Results** - Present multi-category survey data
+📊 **Life Balance Wheels** - Track satisfaction across life areas
+
+💼 **Skills Assessment** - Visualize competency levels
+
+⭐ **Product Reviews** - Display multi-dimensional ratings
+
+📈 **Performance Metrics** - Show KPIs across categories
+
+🎯 **Goal Tracking** - Monitor progress in different areas
+
+📝 **Survey Results** - Present multi-category survey data
 
 ## How It Works
 
-The Radial Rating Chart is a variation of a pie chart where:
-- Each segment represents a category
-- The **radius** of each segment varies based on the rating (unlike traditional pie charts)
-- Higher ratings extend further from the center
-- The chart includes a grid for easy value reading
+### Radial Rating Chart
 
-This makes it perfect for comparing multiple ratings at a glance, especially when you want to see which areas score higher or lower.
+A variation of a pie chart where each segment represents a category and the **radius** varies based on the rating value. Higher ratings extend further from the center, and a concentric grid helps with reading values. This makes it ideal for comparing multiple ratings at a glance.
+
+### Rounded Donut Chart
+
+A donut chart where each segment's arc length is proportional to its value. Segments have smooth, rounded edges achieved through cubic Bezier curves. The center area can display a total or custom text. Well-suited for showing proportional breakdowns — task status, budget allocation, or composition data.
 
 ## Contributing
 
@@ -388,21 +402,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Created by [hzfty](https://github.com/hzfty)
 
-## Support
+## Support & Feedback
 
-If you find this package useful, please give it a ⭐ on GitHub!
+If you find this package useful, please give it a ⭐ on [GitHub](https://github.com/hzfty/radial_charts)!
 
-For bugs or feature requests, please file an [issue on GitHub](https://github.com/hzfty/radial_charts/issues).
-
-## Contact & Feedback
-
-We'd love to hear from you! Whether you have questions, suggestions, or just want to share how you're using radial_charts:
-
+- **Bugs & Features**: [GitHub Issues](https://github.com/hzfty/radial_charts/issues)
 - **Telegram**: [@dosavelyev](https://t.me/dosavelyev)
 - **Email**: [hzftyone@gmail.com](mailto:hzftyone@gmail.com)
-- **GitHub Issues**: [Report bugs or request features](https://github.com/hzfty/radial_charts/issues)
-
-Your feedback helps make this package better for everyone!
 
 ## Changelog
 

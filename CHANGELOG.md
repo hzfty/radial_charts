@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-02-22
+
+### Changed
+- Replaced GIF animations with static JPG screenshots (package size reduced by ~5MB)
+- Improved README structure and clarity
+- Removed outdated "NEW in v0.2.0" markers from documentation
+- Consolidated Support and Contact sections in README
+- Expanded "How It Works" section to cover both chart types
+
 ## [0.2.1] - 2025-10-31
 
 ### Changed
@@ -58,33 +67,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Created `lib/src/common/` folder for shared components
 - Added architecture foundation for future chart types
 - Improved code modularity and reusability
-
-### Old [Unreleased] content (keeping for reference):
-- **RoundedDonutChart**: New donut chart widget with rounded segment edges
-  - Smooth Bezier curve transitions between segments for a polished look
-  - Two-pass rendering algorithm for seamless rounded edges
-  - Configurable center text with automatic total calculation
-  - Three legend styles: `circle`, `rectangle`, and `roundedRectangle`
-  - Optional count badges displayed inside legend indicators
-  - Support for empty state and single-segment visualization
-  - Fully customizable colors, sizes, radii, and text styles
-- New models for RoundedDonutChart:
-  - `DonutSegmentData`: Flexible data model with id, value, color, label, and metadata
-  - `DonutChartConfig`: Configuration for donut appearance and behavior
-  - `LegendStyle`: Enum for legend indicator styles
-- New painters:
-  - `RoundedDonutPainter`: Main painter for multiple segments with rounded edges
-  - `SingleItemDonutPainter`: Optimized painter for single-segment charts
-- Comprehensive documentation for RoundedDonutChart in README
-- API reference documentation for all new components
-
-### Features
-- Rounded edge algorithm using cubic Bezier curves with 4x radius enhancement
-- Automatic handling of edge cases (empty data, single segment, multiple segments)
-- Flexible center text: static string or dynamic builder function
-- Multi-column legend layout with configurable spacing
-- Support for metadata in segment data for custom use cases
-- Consistent API design matching existing RadialRatingChart pattern
 
 ## [0.1.3] - 2025-10-11
 
